@@ -48,7 +48,7 @@ namespace WindowsFormsApp
            DialogResult result= fontDialog.ShowDialog();
             if (result == DialogResult.OK)
             {
-                richTextBox1.SelectionFont = fontDialog.Font;
+                richTextBox1.SelectionFont = fontDialog.Font; 
             }
         }
 
