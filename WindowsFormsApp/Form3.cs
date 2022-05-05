@@ -61,6 +61,7 @@ namespace WindowsFormsApp
 
         private void btnWrite_Click(object sender, EventArgs e)
         {
+            // Write to file code
             
             try
             {
