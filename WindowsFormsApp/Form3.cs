@@ -1,6 +1,9 @@
 ﻿using System;
 using System.IO;
+using System.Runtime.Serialization.Formatters.Binary;
 using System.Windows.Forms;
+using System.Xml.Serialization;
+using System.Runtime.Serialization.Formatters.Soap;
 
 namespace WindowsFormsApp
 {
@@ -91,9 +94,9 @@ namespace WindowsFormsApp
         {
             try
             {
-                fs = new FileStream(@"D:\TestFolder1\FirstFile.txt", FileMode.Open, FileAccess.Read);
+                fs = new FileStream(@"D:\TestFolder1\FirstFile.txt", FileMode.Create, FileAccess.Read);
                 BinaryReader br = new BinaryReader(fs);
-                txtId.Text = br.ReadInt32().ToString() ;
+                txtId.Text = br.ReadInt32().ToString();// convert binary data to int
                 txtName.Text = br.ReadString();
                 txtLocation.Text = br.ReadString();
                 br.Close();  // close the opeation reader
@@ -105,6 +108,107 @@ namespace WindowsFormsApp
             finally
             {
                 fs.Close(); // free the resouce 
+            }
+        }
+
+        private void btnBinaryWrite_Click(object sender, EventArgs e)
+        {
+            try
+            {
+
+                // dept details accepting from the textboxes & storing in the object
+                Department dept = new Department();
+                dept.Id = Convert.ToInt32(txtId.Text);
+                dept.Name = txtName.Text;
+                dept.Location = txtLocation.Text;
+                // default file extension is .dat file (data file) / binary file
+                fs = new FileStream(@"D:\TestFolder1\Dept", FileMode.Create, FileAccess.Write);
+                BinaryFormatter binary = new BinaryFormatter();
+                binary.Serialize(fs, dept);
+                MessageBox.Show("Done");
+
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+                fs.Close();
+            }
+        }
+
+        private void btnBinaryRead_Click(object sender, EventArgs e)
+        {
+            try
+            {
+
+                // dept details accepting from the textboxes & storing in the object
+                Department dept = new Department();
+                // default file extension is .dat file (data file) / binary file
+                fs = new FileStream(@"D:\TestFolder1\Dept", FileMode.Open, FileAccess.Read);
+                BinaryFormatter binary = new BinaryFormatter();
+               dept=(Department) binary.Deserialize(fs);
+                txtId.Text = dept.Id.ToString();
+                txtName.Text = dept.Name;
+                txtLocation.Text = dept.Location;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+                fs.Close();
+            }
+        }
+
+        private void btnXmlWrite_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                Department dept = new Department();
+                dept.Id = Convert.ToInt32(txtId.Text);
+                dept.Name = txtName.Text;
+                dept.Location = txtLocation.Text;
+                // default file extension is .dat file (data file) / binary file
+                fs = new FileStream(@"D:\TestFolder1\DeptXml", FileMode.Create, FileAccess.Write);
+                XmlSerializer xml = new XmlSerializer(typeof(Department));
+                xml.Serialize(fs, dept);
+                MessageBox.Show("Done");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+                fs.Close();
+            }
+        }
+
+        private void btnXmlRead_Click(object sender, EventArgs e)
+        {
+            try
+            {
+
+                // dept details accepting from the textboxes & storing in the object
+                Department dept = new Department();
+                // default file extension is .dat file (data file) / binary file
+                fs = new FileStream(@"D:\TestFolder1\DeptXml", FileMode.Open, FileAccess.Read);
+                XmlSerializer xml = new XmlSerializer(typeof(Department));
+                dept =(Department) xml.Deserialize(fs);
+                txtId.Text = dept.Id.ToString();
+                txtName.Text = dept.Name;
+                txtLocation.Text = dept.Location;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+                fs.Close();
             }
         }
     }

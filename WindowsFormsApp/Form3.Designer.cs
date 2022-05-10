@@ -39,6 +39,10 @@ namespace WindowsFormsApp
             this.btnRead = new System.Windows.Forms.Button();
             this.btnCreateFolder = new System.Windows.Forms.Button();
             this.btnCreateFile = new System.Windows.Forms.Button();
+            this.btnBinaryWrite = new System.Windows.Forms.Button();
+            this.btnBinaryRead = new System.Windows.Forms.Button();
+            this.btnXmlRead = new System.Windows.Forms.Button();
+            this.btnXmlWrite = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label1
@@ -129,11 +133,55 @@ namespace WindowsFormsApp
             this.btnCreateFile.UseVisualStyleBackColor = true;
             this.btnCreateFile.Click += new System.EventHandler(this.btnCreateFile_Click);
             // 
+            // btnBinaryWrite
+            // 
+            this.btnBinaryWrite.Location = new System.Drawing.Point(523, 37);
+            this.btnBinaryWrite.Name = "btnBinaryWrite";
+            this.btnBinaryWrite.Size = new System.Drawing.Size(126, 23);
+            this.btnBinaryWrite.TabIndex = 10;
+            this.btnBinaryWrite.Text = "Binary Write";
+            this.btnBinaryWrite.UseVisualStyleBackColor = true;
+            this.btnBinaryWrite.Click += new System.EventHandler(this.btnBinaryWrite_Click);
+            // 
+            // btnBinaryRead
+            // 
+            this.btnBinaryRead.Location = new System.Drawing.Point(523, 82);
+            this.btnBinaryRead.Name = "btnBinaryRead";
+            this.btnBinaryRead.Size = new System.Drawing.Size(126, 23);
+            this.btnBinaryRead.TabIndex = 11;
+            this.btnBinaryRead.Text = "Binary Read";
+            this.btnBinaryRead.UseVisualStyleBackColor = true;
+            this.btnBinaryRead.Click += new System.EventHandler(this.btnBinaryRead_Click);
+            // 
+            // btnXmlRead
+            // 
+            this.btnXmlRead.Location = new System.Drawing.Point(532, 207);
+            this.btnXmlRead.Name = "btnXmlRead";
+            this.btnXmlRead.Size = new System.Drawing.Size(117, 23);
+            this.btnXmlRead.TabIndex = 12;
+            this.btnXmlRead.Text = "XML Read";
+            this.btnXmlRead.UseVisualStyleBackColor = true;
+            this.btnXmlRead.Click += new System.EventHandler(this.btnXmlRead_Click);
+            // 
+            // btnXmlWrite
+            // 
+            this.btnXmlWrite.Location = new System.Drawing.Point(532, 148);
+            this.btnXmlWrite.Name = "btnXmlWrite";
+            this.btnXmlWrite.Size = new System.Drawing.Size(117, 23);
+            this.btnXmlWrite.TabIndex = 13;
+            this.btnXmlWrite.Text = "XML Write";
+            this.btnXmlWrite.UseVisualStyleBackColor = true;
+            this.btnXmlWrite.Click += new System.EventHandler(this.btnXmlWrite_Click);
+            // 
             // Form3
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.btnXmlWrite);
+            this.Controls.Add(this.btnXmlRead);
+            this.Controls.Add(this.btnBinaryRead);
+            this.Controls.Add(this.btnBinaryWrite);
             this.Controls.Add(this.btnCreateFile);
             this.Controls.Add(this.btnCreateFolder);
             this.Controls.Add(this.btnRead);
@@ -163,5 +211,9 @@ namespace WindowsFormsApp
         private System.Windows.Forms.Button btnRead;
         private System.Windows.Forms.Button btnCreateFolder;
         private System.Windows.Forms.Button btnCreateFile;
+        private System.Windows.Forms.Button btnBinaryWrite;
+        private System.Windows.Forms.Button btnBinaryRead;
+        private System.Windows.Forms.Button btnXmlRead;
+        private System.Windows.Forms.Button btnXmlWrite;
     }
 }
