@@ -101,10 +101,12 @@ namespace WindowsFormsApp
             DataRow row = ds.Tables["emp"].Rows.Find(Convert.ToInt32(txtId.Text));
             if (row != null)
             {
-                ds.Tables["emp"].Rows.Remove(row);
+                row.Delete();
                 int res = da.Update(ds.Tables["emp"]);
                 if (res == 1)
                     MessageBox.Show("record deleted");
+                else
+                    MessageBox.Show("Not able to delete");
             }
             else
             {
